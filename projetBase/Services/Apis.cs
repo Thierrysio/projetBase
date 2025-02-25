@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -9,8 +11,11 @@ namespace projetBase.Services
 {
     public class Apis
     {
+        #region attributs
         public readonly HttpClient _httpClient = new HttpClient();
+        #endregion
 
+        #region Methodes
         public async Task<ObservableCollection<T>> GetAllAsync<T>(string url)
         {
             try
@@ -25,6 +30,7 @@ namespace projetBase.Services
                 throw;
             }
         }
+        #endregion
 
     }
 }
