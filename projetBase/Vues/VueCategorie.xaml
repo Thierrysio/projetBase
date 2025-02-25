@@ -1,12 +1,45 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="projetBase.Vues.VueCategorie"
-             Title="VueCategorie">
-    <VerticalStackLayout>
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="projetBase.Vues.VueCategorie"
+    Title="VueCategorie">
+
+    <VerticalStackLayout Padding="10">
+
         <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            Text="Liste des Catégories" 
+            FontSize="20" 
+            FontAttributes="Bold"
+            HorizontalOptions="Center" 
+            Margin="0,0,0,10"/>
+
+        <CollectionView
+            ItemsSource="{Binding CP}"
+            VerticalOptions="FillAndExpand"
+            SelectionMode="None">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="5" ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Affiche l'ID -->
+                        <Label Text="{Binding Id}"
+                               VerticalOptions="Center"/>
+
+                        <!-- Affiche le Nom -->
+                        <Label Text="{Binding Nom}"
+                               Grid.Column="1"
+                               VerticalOptions="Center"
+                               FontAttributes="Bold"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
     </VerticalStackLayout>
 </ContentPage>
