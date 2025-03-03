@@ -8,7 +8,7 @@ namespace projetBase
         {
             InitializeComponent();
 
-            MainPage = new VueProduit();
+            MainPage = new VueCategorie();
         }
     }
 }
