@@ -8,6 +8,6 @@ namespace projetBase
 {
     public class Constantes
     {
-        public static string BaseApiAddress => "http://172.17.0.64/";
+        public static string BaseApiAddress => "http://213.130.144.159/";
     }
 }

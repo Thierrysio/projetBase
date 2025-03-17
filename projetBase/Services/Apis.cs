@@ -30,6 +30,33 @@ namespace projetBase.Services
                 throw;
             }
         }
+        public async Task<bool> PostOneAsync<T>(string endpoint, T requestDataObj)
+        {
+            try
+            {
+                var jsonString = JsonConvert.SerializeObject(requestDataObj);
+                var jsonContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+                var response = await _httpClient.PostAsync(Constantes.BaseApiAddress + endpoint, jsonContent);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    // Handle or log the error based on the response status
+                    return response.IsSuccessStatusCode;
+                }
+
+                var json = await response.Content.ReadAsStringAsync();
+                //T result = JsonConvert.DeserializeObject<T>(json, new IsoDateTimeConverter { DateTimeFormat = "yyyy-MM-dd HH:mm:ss" });
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception as needed.
+                return false;
+            }
+
+
+        }
         public async Task<T> GetOneAsync<T>(string endpoint, T requestDataObj)
         {
             try

@@ -18,7 +18,7 @@ public partial class VueProduit : ContentPage
     private async void GetProduit()
     {
 
-        Produit res = await _apiServices.GetOneAsync<Produit>("api/mobile/getProduit", new Produit(2,""));
+        bool res = await _apiServices.PostOneAsync<Produit>("api/mobile/getProduit", new Produit(2,""));
 
 
     }
